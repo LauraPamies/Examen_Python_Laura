@@ -32,11 +32,61 @@ def read_data(nombrefichero):
             }})
     fichero.close()
         
+    if contvaloresllenos >10:
+        raise ValueError("Ha ocurrido la excepción ")
 
     return datosvino
 
 
 def split(diccionario):
     diccionariowhite = dict()
+    contwhite = 0
+
+    diccionariored = dict()
+    contred = 0
+
     for key in diccionario.keys():
-        
+        if diccionario[key]["type"] == "white":
+            contwhite = contwhite+1
+            diccionariowhite.update({"dato"+str(contwhite): {
+            "fixed acidity" : diccionario[key]["fixed acidity"],
+            "volatile acidity" : diccionario[key]["volatile acidity"],
+            "citric acid" : diccionario[key]["citric acid"],
+            "residual sugar" : diccionario[key]["residual sugar"],
+            "chlorides" : diccionario[key]["chlorides"],
+            "free sulfur dioxide" : diccionario[key]["free sulfur dioxide"],
+            "total sulfur dioxide" : diccionario[key]["total sulfur dioxide"],
+            "density" : diccionario[key]["density"],
+            "PH" : diccionario[key]["PH"],
+            "sulphates" : diccionario[key]["sulphates"],
+            "alcohol" : diccionario[key]["alcohol"],
+            "quality" : diccionario[key]["quality"]
+            }})
+
+        if diccionario[key]["type"] == "red":
+            contred = contred+1
+            diccionariored.update({"dato"+str(contred): {
+            "fixed acidity" : diccionario[key]["fixed acidity"],
+            "volatile acidity" : diccionario[key]["volatile acidity"],
+            "citric acid" : diccionario[key]["citric acid"],
+            "residual sugar" : diccionario[key]["residual sugar"],
+            "chlorides" : diccionario[key]["chlorides"],
+            "free sulfur dioxide" : diccionario[key]["free sulfur dioxide"],
+            "total sulfur dioxide" : diccionario[key]["total sulfur dioxide"],
+            "density" : diccionario[key]["density"],
+            "PH" : diccionario[key]["PH"],
+            "sulphates" : diccionario[key]["sulphates"],
+            "alcohol" : diccionario[key]["alcohol"],
+            "quality" : diccionario[key]["quality"]
+            }})
+
+    return diccionariowhite,diccionariored
+
+
+def reduce(diccionario,texto):
+    listafinal = list()
+    for key in diccionario.keys():
+        listafinal.append(diccionario[key][texto])
+
+    return listafinal
+
