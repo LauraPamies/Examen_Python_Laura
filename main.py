@@ -1,3 +1,4 @@
 from functions import *
 
-read_data("winequality")
+diccionario = read_data("winequality")
+print(diccionario)
