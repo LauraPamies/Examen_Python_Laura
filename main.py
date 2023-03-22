@@ -10,6 +10,8 @@ diccionariowhite,diccionariored = split(diccionario)
 
 #print(diccionariored)
 
-listareducida = reduce(diccionariored,"quality")
-
+try:
+    listareducida = reduce(diccionariored,"quality")
+except ValueError as e:
+    print(e, type(e))
 #print(listareducida)

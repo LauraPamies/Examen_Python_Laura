@@ -32,7 +32,7 @@ def read_data(nombrefichero):
             }})
     fichero.close()
         
-    if contvaloresllenos >10:
+    if contvaloresllenos <10:
         raise ValueError("Ha ocurrido la excepción ")
 
     return datosvino
@@ -86,6 +86,9 @@ def split(diccionario):
 def reduce(diccionario,texto):
     listafinal = list()
     for key in diccionario.keys():
+        if texto != "fixed acidity" and texto != "volatile acidity" and texto != "citric acid" and texto != "residual sugar" and texto != "chlorides" and texto != "free sulfur dioxide" and texto != "total sulfur dioxide" and texto != "density" and texto != "PH" and texto != "sulphates" and texto != "alcohol" and texto!= "quality":
+            raise ValueError("Ha ocurrido la excepción ")
+        
         listafinal.append(diccionario[key][texto])
 
     return listafinal
