@@ -3,13 +3,15 @@
 def read_data(nombrefichero):
     fichero = open(nombrefichero+".csv", mode="rt", encoding="utf-8")
     datosvino = dict()
-    lineas = fichero.readlines()
+    linea = fichero.readlines()
     cont =0
-    for linea in lineas:
+    linea = fichero.readline()
+    while linea != "type,fixed acidity,volatile acidity,citric acid,residual sugar,chlorides,free sulfur dioxide,total sulfur dioxide,density,pH,sulphates,alcohol,quality" : #mientras haya lineas
+        linea = fichero.readline()
         cont=cont+1
-        print(cont)
+        print(linea)
         palabras = linea.strip().split() #divide todas las palabras de la linea
-        print(palabras[0])
+        print(palabras)
         datosvino.update({"dato"+str(cont): {
         "type" : palabras[1],
         "fixed acidity" : palabras[1],
@@ -22,5 +24,7 @@ def read_data(nombrefichero):
         "PH" : palabras[8],
         "sulphates" : palabras[9],
         "alcohol" : palabras[10]}})
+    fichero.close()
+            
 
     return datosvino
