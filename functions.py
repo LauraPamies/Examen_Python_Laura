@@ -1,5 +1,6 @@
-#recibe el nombre de un fichero csv con muestras de vino
-#y devuelve un diccionario con un formato
+from math import *
+
+
 def read_data(nombrefichero):
     fichero = open(nombrefichero+".csv", mode="rt", encoding="utf-8")
     next(fichero)
@@ -93,3 +94,25 @@ def reduce(diccionario,texto):
 
     return listafinal
 
+def silhouette(lista1,lista2):
+    distancia = 0
+    distanciadistintalista = 0
+
+    a = 0
+    b = 0
+    valores = 0
+    valores2 = 0
+    for i in lista1:
+        for j in lista1:
+            valores = valores + 1
+            distancia = distancia + (sqrt(pow(abs(i-j)),2))
+
+        a = distancia / (valores-1)
+        for value2 in lista2:
+            valores2 = valores2 +1
+            distanciadistintalista = distanciadistintalista + (sqrt(pow(abs(i-valores2)),2))
+        
+        b = distanciadistintalista / (valores2-1)
+    
+    S= ((b-a) / max(a,b))
+    return S
