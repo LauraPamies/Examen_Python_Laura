@@ -12,6 +12,10 @@ diccionariowhite,diccionariored = split(diccionario)
 
 try:
     listareducida = reduce(diccionariored,"quality")
+    listareducida2 = reduce(diccionariowhite,"quality")
+
 except ValueError as e:
     print(e, type(e))
 #print(listareducida)
+
+#silhouette(listareducida,listareducida2)

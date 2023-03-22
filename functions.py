@@ -105,12 +105,13 @@ def silhouette(lista1,lista2):
     for i in lista1:
         for j in lista1:
             valores = valores + 1
-            distancia = distancia + (sqrt(pow(abs(i-j)),2))
+            
+            distancia = distancia + sqrt(pow(abs(i-j)),2)
 
         a = distancia / (valores-1)
         for value2 in lista2:
             valores2 = valores2 +1
-            distanciadistintalista = distanciadistintalista + (sqrt(pow(abs(i-valores2)),2))
+            distanciadistintalista = distanciadistintalista + (sqrt(pow(abs(i-value2)),2))
         
         b = distanciadistintalista / (valores2-1)
     
